@@ -34,13 +34,34 @@ namespace WebSec2Demo
 
         private static void Crack()
         {
-            Console.WriteLine("*** CRACKING DEMO ***");
-            Console.Write("Hash:");
-            var hash = Console.ReadLine();
+            // På samma sätt som https://en.wikipedia.org/wiki/List_of_data_breaches
+            //DVS Säg att vi fått tag på 
+            /*
+             *
+             *Id	UserId	HashedPassword
+            2	stefan	5F4DCC3B5AA765D61D8327DEB882CF99
+            3	oliver	6DBD0FE19C9A301C4708287780DF41A2
+            4	josefine	C1A93BDFFE7D5062BA3489BBD21E59DC
+
+
             //Jaha... men det GÅR ju inte??? 
             //matematiken säger att en hash går inte att "decryptera"
+            /och det gör det inte I promise!!
+             *
+             */
 
+            Console.WriteLine("*** CRACKING DEMO ***");
+            Console.Write("Hash:");
 
+            var hash = Console.ReadLine();
+
+            var cracker = new PasswordCracker();
+            var clearText = cracker.Solve(hash);
+
+            if (clearText == null)
+                Console.WriteLine("Gick inte...");
+            else
+                Console.WriteLine( $"Cracked. Lösenordet är:{clearText}" );
         }
 
         private static void Register(DatabaseContext context)
@@ -96,6 +117,7 @@ namespace WebSec2Demo
             Console.WriteLine("1. Register as new user");
             Console.WriteLine("2. Login");
             Console.WriteLine("3. Crack a hash");
+            Console.Write("Enter action :>");
             return Console.ReadLine();
         }
 
