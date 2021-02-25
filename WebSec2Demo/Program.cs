@@ -26,8 +26,21 @@ namespace WebSec2Demo
                         Register(context);
                     if (action == "2")
                         Login(context);
+                    if (action == "3")
+                        Crack();
                 }
             }
+        }
+
+        private static void Crack()
+        {
+            Console.WriteLine("*** CRACKING DEMO ***");
+            Console.Write("Hash:");
+            var hash = Console.ReadLine();
+            //Jaha... men det GÅR ju inte??? 
+            //matematiken säger att en hash går inte att "decryptera"
+
+
         }
 
         private static void Register(DatabaseContext context)
